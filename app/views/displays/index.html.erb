@@ -1,0 +1,31 @@
+<h1>Supporter Requests</h1>
+<!-- <%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %> -->
+<% @task = 'Not Done' %>
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th>Actions</th>
+
+  </tr>
+
+  <% @displays.each do |display| %>
+    <tr>
+      <td><%= display.name %></td>
+      <td><%= link_to display.email, display_path(display) %></td>
+      <td><%= display.department_name %></td>
+      <td><%= display.message %></td>
+      <td><%= link_to 'Edit', edit_display_path(display) %>
+          <%= link_to 'Destroy', display_path(display),
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %>
+           <%= link_to @task, displays_path %></td>
+    </tr>
+  <% end %>
+</table>

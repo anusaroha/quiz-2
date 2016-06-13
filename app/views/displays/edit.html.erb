@@ -1,0 +1,45 @@
+<h1>Editing display</h1>
+
+<%= form_for :display, url: display_path(@display), method: :patch do |f| %>
+
+  <% if @display.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@display.errors.count, "error") %> prohibited
+        this display from being saved:
+      </h2>
+      <ul>
+        <% @display.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_area :email %>
+  </p>
+
+
+    <p>
+      <%= f.label :message %><br>
+      <%= f.text_field :message %>
+    </p>
+    <p>
+      <%= check_box_tag(:completion) %>
+      <%= label_tag(:completion, "I am done") %>
+    </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
+
+<%= link_to 'Back', displays_path %>
